@@ -1,5 +1,11 @@
 package swing_study.panel;
 
+
+
+/**
+ * @author surin
+ * 원래 dto package 따로 해서 넣어야하지만 일단 학습상의 이유로 같은 panel 패키지에 넣음!
+ */
 public class Department {
 	
 	private int deptNo;
