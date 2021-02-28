@@ -44,10 +44,10 @@ public class JPanelEx extends JFrame implements ActionListener {
 
 		btnClear = new JButton("초기화");
 		btnClear.addActionListener(this);
-		
-				btnGetDept = new JButton("부서 가져오기");
-				btnGetDept.addActionListener(this);
-				pBtn.add(btnGetDept);
+
+		btnGetDept = new JButton("부서 가져오기");
+		btnGetDept.addActionListener(this);
+		pBtn.add(btnGetDept);
 		pBtn.add(btnClear);
 	}
 
