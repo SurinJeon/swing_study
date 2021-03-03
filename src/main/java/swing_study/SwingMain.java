@@ -4,22 +4,24 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 import swing_study.component.FrameComponentEx;
+import swing_study.component.Fruit;
+import swing_study.component.JButtonEx;
+import swing_study.component.JCheckBoxCustomEx;
+import swing_study.component.JCheckBoxEx;
 import swing_study.component.JLabelEx;
 import swing_study.frame.JPanelEx;
 import swing_study.frame.contentPaneEx;
 import swing_study.layout.FrameLayout;
 import swing_study.layout.LayoutGubun;
-
-import javax.swing.border.TitledBorder;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
 public class SwingMain extends JFrame implements ActionListener {
@@ -37,6 +39,8 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JButton btn04;
 	private JButton btn05;
 	private JPanel pCheckRadio;
+	private JButton btn06;
+	private JButton btn07;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -128,9 +132,20 @@ public class SwingMain extends JFrame implements ActionListener {
 		pCheckRadio = new JPanel();
 		pCheckRadio.setBorder(new TitledBorder(null, "JCheckBox & JRadioButton", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(pCheckRadio);
+		pCheckRadio.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		btn06 = new JButton("JCheckBox");
+		btn06.addActionListener(this);
+		pCheckRadio.add(btn06);
+		
+		btn07 = new JButton("JRadioButton");
+		pCheckRadio.add(btn07);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn06) {
+			actionPerformedBtn06(e);
+		}
 		if (e.getSource() == btn05) {
 			actionPerformedBtn05(e);
 		}
@@ -200,7 +215,22 @@ public class SwingMain extends JFrame implements ActionListener {
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtn05(ActionEvent e) {
-		JButton frame = new JButton();
+		JButtonEx frame = new JButtonEx();
 		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn06(ActionEvent e) {
+		JCheckBoxEx frame = new JCheckBoxEx();
+		frame.setVisible(true);
+		
+		ArrayList<Fruit> list = new ArrayList<Fruit>();
+		list.add(new Fruit("사과", 100));
+		list.add(new Fruit("배", 500));
+		list.add(new Fruit("체리", 2000));
+		list.add(new Fruit("바나나", 1000));
+		list.add(new Fruit("포도", 800));
+		list.add(new Fruit("토마토", 1500));
+		
+		JCheckBoxCustomEx frame1 = new JCheckBoxCustomEx(list);
+		frame1.setVisible(true);
 	}
 }

@@ -1,35 +1,32 @@
 package swing_study.component;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.border.TitledBorder;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
-public class JButton extends JFrame implements ActionListener {
+@SuppressWarnings("serial")
+public class JButtonEx extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	String imgPath = System.getProperty("user.dir") + File.separator  + "img" + File.separator;
 	private JToggleButton tglBtn;
 
-	public JButton() {
+	public JButtonEx() {
 		initialize();
 	}
 	private void initialize() {
 		setTitle("JButton & JToggleButton Ex");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 573, 537);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
