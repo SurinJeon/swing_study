@@ -18,22 +18,19 @@ public class JPanelEx extends JFrame implements ActionListener {
 		initialize();
 	}
 
-	private JPanel contentPane;
+	private DeptPanel contentPane;
 	private JButton btnGetDept;
 	private JButton btnSetDept;
-	private DeptPanel pDept;
 	private JButton btnClear;
+	private DeptPanel pDept;
 
 	private void initialize() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(550, 100, 450, 300);
-		contentPane = new JPanel();
+		contentPane = new DeptPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-
-		pDept = new DeptPanel();
-		contentPane.add(pDept, BorderLayout.CENTER);
 
 		JPanel pBtn = new JPanel();
 		contentPane.add(pBtn, BorderLayout.SOUTH);
@@ -49,6 +46,9 @@ public class JPanelEx extends JFrame implements ActionListener {
 		btnGetDept.addActionListener(this);
 		pBtn.add(btnGetDept);
 		pBtn.add(btnClear);
+		
+		pDept = new DeptPanel();
+		contentPane.add(pDept, BorderLayout.CENTER);
 	}
 
 	public void actionPerformed(ActionEvent e) {
