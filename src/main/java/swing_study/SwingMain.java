@@ -132,7 +132,7 @@ public class SwingMain extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btn05) {
-			actionPerformedBtn06(e);
+			actionPerformedBtn05(e);
 		}
 		if (e.getSource() == btn04) {
 			actionPerformedBtn04(e);
@@ -199,7 +199,7 @@ public class SwingMain extends JFrame implements ActionListener {
 		JLabelEx frame = new JLabelEx();
 		frame.setVisible(true);
 	}
-	protected void actionPerformedBtn06(ActionEvent e) {
+	protected void actionPerformedBtn05(ActionEvent e) {
 		JButton frame = new JButton();
 		frame.setVisible(true);
 	}
