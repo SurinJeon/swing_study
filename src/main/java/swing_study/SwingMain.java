@@ -19,6 +19,7 @@ import swing_study.component.JCheckBoxCustomEx;
 import swing_study.component.JCheckBoxEx;
 import swing_study.component.JLabelEx;
 import swing_study.component.JRadioButtonEx;
+import swing_study.component.JTextFieldAreaEx;
 import swing_study.frame.JPanelEx;
 import swing_study.frame.contentPaneEx;
 import swing_study.layout.FrameLayout;
@@ -150,10 +151,14 @@ public class SwingMain extends JFrame implements ActionListener {
 		contentPane.add(pText);
 		
 		btn08 = new JButton("TextField");
+		btn08.addActionListener(this);
 		pText.add(btn08);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn08) {
+			actionPerformedBtn08(e);
+		}
 		if (e.getSource() == btn07) {
 			actionPerformedBtn07(e);
 		}
@@ -251,5 +256,9 @@ public class SwingMain extends JFrame implements ActionListener {
 		JRadioButtonEx frame = new JRadioButtonEx();
 		frame.setVisible(true);
 		
+	}
+	protected void actionPerformedBtn08(ActionEvent e) {
+		JTextFieldAreaEx frame = new JTextFieldAreaEx();
+		frame.setVisible(true);
 	}
 }
