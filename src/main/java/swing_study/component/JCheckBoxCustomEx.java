@@ -26,7 +26,7 @@ public class JCheckBoxCustomEx extends JFrame implements ItemListener {
 		list.forEach(s -> System.out.println(s)); // 람다식으로 반복문 돌리지 않고도 활용 가능
 	}
 	private void initialize() {
-		setTitle("실전 체크박스");
+		setTitle("JCheckBoxCustom Ex");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -37,7 +37,7 @@ public class JCheckBoxCustomEx extends JFrame implements ItemListener {
 		JPanel pNorth = new JPanel();
 		contentPane.add(pNorth, BorderLayout.NORTH);
 		
-		JLabel lblTitle = new JLabel("New label");
+		JLabel lblTitle = new JLabel("");
 		pNorth.add(lblTitle);
 		
 		JPanel pCenter = new JPanel();
