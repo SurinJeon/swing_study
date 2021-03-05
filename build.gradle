@@ -21,6 +21,11 @@ repositories {
 dependencies { // 프로젝트 시 필요한 라이브러리 지정하면 팀원끼리 환경 달라지지 않음
 	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
 	// implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
+	
+	// https://mvnrepository.com/artifact/com.toedter/jcalendar
+	implementation group: 'com.toedter', name: 'jcalendar', version: '1.4'
+	
+	
     testImplementation 'junit:junit:4.13'
 }
 
