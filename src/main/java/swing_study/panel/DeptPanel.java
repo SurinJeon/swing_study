@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 // 와꾸짜기
+@SuppressWarnings("serial")
 public class DeptPanel extends JPanel {
 	private JTextField tfDeptNo;
 	private JTextField tfDeptName;
@@ -55,6 +56,31 @@ public class DeptPanel extends JPanel {
 
 		return new Department(deptno, deptname, floor);
 	}
+	
+
+//	public JTextField getTfDeptNo() {
+//		return tfDeptNo;
+//	}
+//
+//	public void setTfDeptNo(JTextField tfDeptNo) {
+//		this.tfDeptNo = tfDeptNo;
+//	}
+//
+//	public JTextField getTfDeptName() {
+//		return tfDeptName;
+//	}
+//
+//	public void setTfDeptName(JTextField tfDeptName) {
+//		this.tfDeptName = tfDeptName;
+//	}
+//
+//	public JTextField getTfFloor() {
+//		return tfFloor;
+//	}
+//
+//	public void setTfFloor(JTextField tfFloor) {
+//		this.tfFloor = tfFloor;
+//	}
 
 	public void setDepartment(Department department) {
 //		tfDeptNo.setText(String.valueOf(department.getDeptno()));
