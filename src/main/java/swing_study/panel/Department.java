@@ -59,7 +59,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return String.format("%d, %s, %d", deptName, deptNo, floor); 
+		return String.format("%d, %s, %d", deptNo, deptName, floor); 
 	}
 	
 }

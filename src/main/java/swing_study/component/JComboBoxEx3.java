@@ -33,16 +33,10 @@ public class JComboBoxEx3 extends JFrame implements ActionListener {
 	private DefaultComboBoxModel<Department> model;
 	private DeptPanel pDept;
 	private JButton btnCk;
-	private Department[] dept;
 	
 	
 	public JComboBoxEx3() {
-//		dept = new Department[]{
-//				new Department(1, "기획", 8),
-//				new Department(2, "영업", 10),
-//				new Department(3, "개발", 22)
-//				};
-//		deptList = Arrays.asList(dept);
+
 		deptList.add(new Department(1, "기획", 8));
 		deptList.add(new Department(2, "영업", 10));
 		deptList.add(new Department(3, "개발", 22));

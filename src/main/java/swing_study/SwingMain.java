@@ -25,11 +25,15 @@ import swing_study.component.JListEx;
 import swing_study.component.JListEx2;
 import swing_study.component.JListEx3;
 import swing_study.component.JRadioButtonEx;
+import swing_study.component.JSliderEx;
+import swing_study.component.JSpinnerEx;
+import swing_study.component.JTabbedPaneEx;
 import swing_study.component.JTextFieldAreaEx;
 import swing_study.frame.JPanelEx;
 import swing_study.frame.contentPaneEx;
 import swing_study.layout.FrameLayout;
 import swing_study.layout.LayoutGubun;
+import java.awt.BorderLayout;
 
 @SuppressWarnings("serial")
 public class SwingMain extends JFrame implements ActionListener {
@@ -59,6 +63,13 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JButton btn12;
 	private JButton btn13;
 	private JButton btn14;
+	private JPanel pSliderSpiner;
+	private JPanel pSlider;
+	private JPanel pSpiner;
+	private JButton btn15;
+	private JButton btn16;
+	private JPanel pTabbedPane;
+	private JButton btn17;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -201,9 +212,48 @@ public class SwingMain extends JFrame implements ActionListener {
 		btn14 = new JButton("JComboBox3");
 		btn14.addActionListener(this);
 		pComboBox.add(btn14);
+		
+		pSliderSpiner = new JPanel();
+		contentPane.add(pSliderSpiner);
+		pSliderSpiner.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		pSlider = new JPanel();
+		pSlider.setBorder(new TitledBorder(null, "JSlider", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pSliderSpiner.add(pSlider);
+		pSlider.setLayout(new BorderLayout(0, 0));
+		
+		btn15 = new JButton("JSlider");
+		btn15.addActionListener(this);
+		pSlider.add(btn15, BorderLayout.CENTER);
+		
+		pSpiner = new JPanel();
+		pSpiner.setBorder(new TitledBorder(null, "JSpiner", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pSliderSpiner.add(pSpiner);
+		pSpiner.setLayout(new BorderLayout(0, 0));
+		
+		btn16 = new JButton("JSpiner");
+		btn16.addActionListener(this);
+		pSpiner.add(btn16, BorderLayout.CENTER);
+		
+		pTabbedPane = new JPanel();
+		pTabbedPane.setBorder(new TitledBorder(null, "JTabbedPane", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(pTabbedPane);
+		
+		btn17 = new JButton("JTabbedPane");
+		btn17.addActionListener(this);
+		pTabbedPane.add(btn17);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn17) {
+			actionPerformedBtn17(e);
+		}
+		if (e.getSource() == btn16) {
+			actionPerformedBtn16(e);
+		}
+		if (e.getSource() == btn15) {
+			actionPerformedBtn15(e);
+		}
 		if (e.getSource() == btn14) {
 			actionPerformedBtn14(e);
 		}
@@ -349,6 +399,18 @@ public class SwingMain extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtn14(ActionEvent e) {
 		JComboBoxEx3 frame = new JComboBoxEx3();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn15(ActionEvent e) {
+		JSliderEx frame = new JSliderEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn16(ActionEvent e) {
+		JSpinnerEx frame = new JSpinnerEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn17(ActionEvent e) {
+		JTabbedPaneEx frame = new JTabbedPaneEx();
 		frame.setVisible(true);
 	}
 }
