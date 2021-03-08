@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class JSpinnerEx extends JFrame implements ActionListener {
+public class JSpinnerEx extends JFrame{
 
 	private JPanel contentPane;
 	private JButton btnMonth;
@@ -68,29 +68,6 @@ public class JSpinnerEx extends JFrame implements ActionListener {
 		spinner3.setEditor(new JSpinner.DateEditor(spinner3, "yyyy-MM-dd"));
 		pSpinner3.add(spinner3);
 		
-		btnMonth = new JButton("Month Change");
-		btnMonth.addActionListener(this);
-		pSpinner3.add(btnMonth);
-		
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnMonth) {
-			actionPerformedBtnMonth(e);
-		}
-	}
-	protected void actionPerformedBtnMonth(ActionEvent e) {
-		spinner3 = new JSpinner();
-		cal = Calendar.getInstance();
-		Date value = cal.getTime();
-		
-		cal.add(Calendar.MONTH, 1);
-		Date start = cal.getTime();
-		
-		cal.add(Calendar.MONTH, 11);
-		Date end = cal.getTime();
-		
-		spinner3.setModel(new SpinnerDateModel(value, start, end, Calendar.MONTH));
-		
-	}
 }
