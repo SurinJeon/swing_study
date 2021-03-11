@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class JPopupMenuEx extends JFrame {
@@ -43,6 +44,7 @@ public class JPopupMenuEx extends JFrame {
 		JPopupMenu popupMenu = new JPopupMenu();
 
 		JMenuItem screen = new JMenuItem("Screen");
+		screen.setHorizontalAlignment(SwingConstants.CENTER);
 		screen.addActionListener(listener);
 		popupMenu.add(screen);
 		
@@ -53,6 +55,7 @@ public class JPopupMenuEx extends JFrame {
 		popupMenu.add(separator_12);
 
 		JMenuItem load = new JMenuItem("Load");
+		load.setHorizontalAlignment(SwingConstants.CENTER);
 		load.addActionListener(listener);
 		popupMenu.add(load);
 
@@ -60,6 +63,7 @@ public class JPopupMenuEx extends JFrame {
 		popupMenu.add(separator);
 
 		JMenuItem hide = new JMenuItem("Hide");
+		hide.setHorizontalAlignment(SwingConstants.CENTER);
 		hide.addActionListener(listener);
 		popupMenu.add(hide);
 
@@ -67,6 +71,7 @@ public class JPopupMenuEx extends JFrame {
 		popupMenu.add(separator_1);
 
 		JMenuItem reShow = new JMenuItem("ReShow");
+		reShow.setHorizontalAlignment(SwingConstants.CENTER);
 		reShow.addActionListener(listener);
 		popupMenu.add(reShow);
 
@@ -74,6 +79,7 @@ public class JPopupMenuEx extends JFrame {
 		popupMenu.add(separator_2);
 
 		JMenuItem exit = new JMenuItem("Exit");
+		exit.setHorizontalAlignment(SwingConstants.CENTER);
 		exit.addActionListener(listener);
 		popupMenu.add(exit);
 

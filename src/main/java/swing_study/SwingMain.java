@@ -37,6 +37,10 @@ import swing_study.component.JSpinnerEx;
 import swing_study.component.JTabbedPaneEx;
 import swing_study.component.JTableEx;
 import swing_study.component.JTextFieldAreaEx;
+import swing_study.dlg.JFileChooserEx;
+import swing_study.dlg.JOptionPaneConfirmEx;
+import swing_study.dlg.JOptionPaneInputEx;
+import swing_study.dlg.JOptionPaneMessageEx;
 import swing_study.frame.JPanelEx;
 import swing_study.frame.contentPaneEx;
 import swing_study.layout.FrameLayout;
@@ -95,6 +99,12 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JPanel pMenu;
 	private JButton btn24;
 	private JButton btn25;
+	private JPanel pDlg;
+	private JButton btn26;
+	private JButton btn27;
+	private JButton btn28;
+	private JPanel pFileChooser;
+	private JButton btn29;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -375,9 +385,45 @@ public class SwingMain extends JFrame implements ActionListener {
 		btn25 = new JButton("JPopupMenu");
 		btn25.addActionListener(this);
 		pMenu.add(btn25);
+		
+		pDlg = new JPanel();
+		pDlg.setBorder(new TitledBorder(null, "JOptionPane", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(pDlg);
+		pDlg.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		btn26 = new JButton("InputDlg");
+		btn26.addActionListener(this);
+		pDlg.add(btn26);
+		
+		btn27 = new JButton("ConfirmDlg");
+		btn27.addActionListener(this);
+		pDlg.add(btn27);
+		
+		btn28 = new JButton("MessageDlg");
+		btn28.addActionListener(this);
+		pDlg.add(btn28);
+		
+		pFileChooser = new JPanel();
+		contentPane.add(pFileChooser);
+		
+		btn29 = new JButton("JFileChooser");
+		btn29.addActionListener(this);
+		pFileChooser.add(btn29);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn29) {
+			actionPerformedBtn29(e);
+		}
+		if (e.getSource() == btn28) {
+			actionPerformedBtn28(e);
+		}
+		if (e.getSource() == btn27) {
+			actionPerformedBtn27(e);
+		}
+		if (e.getSource() == btn26) {
+			actionPerformedBtn26(e);
+		}
 		if (e.getSource() == btn25) {
 			actionPerformedBtn25(e);
 		}
@@ -609,6 +655,22 @@ public class SwingMain extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtn25(ActionEvent e) {
 		JPopupMenuEx frame = new JPopupMenuEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn26(ActionEvent e) {
+		JOptionPaneInputEx frame = new JOptionPaneInputEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn27(ActionEvent e) {
+		JOptionPaneConfirmEx frame = new JOptionPaneConfirmEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn28(ActionEvent e) {
+		JOptionPaneMessageEx frame = new JOptionPaneMessageEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn29(ActionEvent e) {
+		JFileChooserEx frame = new JFileChooserEx();
 		frame.setVisible(true);
 	}
 }
