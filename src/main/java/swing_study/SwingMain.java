@@ -1,14 +1,20 @@
 package swing_study;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
@@ -35,9 +41,13 @@ import swing_study.frame.JPanelEx;
 import swing_study.frame.contentPaneEx;
 import swing_study.layout.FrameLayout;
 import swing_study.layout.LayoutGubun;
-import java.awt.BorderLayout;
-import javax.swing.UIManager;
-import java.awt.Color;
+import swing_study.listener.AnonymousClassListener;
+import swing_study.listener.IndepClassListener;
+import swing_study.listener.InnerClassListener;
+import swing_study.listener.MouseAdapterEx;
+import swing_study.listener.MouseListenerEx;
+import swing_study.menu.JMenuEx;
+import swing_study.menu.JPopupMenuEx;
 
 @SuppressWarnings("serial")
 public class SwingMain extends JFrame implements ActionListener {
@@ -76,6 +86,15 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JButton btn17;
 	private JButton btn0402;
 	private JButton btn18;
+	private JPanel pEventListener;
+	private JButton btn19;
+	private JButton btn20;
+	private JButton btn21;
+	private JButton btn22;
+	private JButton btn23;
+	private JPanel pMenu;
+	private JButton btn24;
+	private JButton btn25;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -99,7 +118,7 @@ public class SwingMain extends JFrame implements ActionListener {
 	private void initialize() {
 		setTitle("swing study");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(10, 10, 677, 427);
+		setBounds(10, 10, 686, 565);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -216,11 +235,43 @@ public class SwingMain extends JFrame implements ActionListener {
 		pComboBox.add(btn12);
 		
 		btn13 = new JButton("JComboBox2");
-		btn13.addActionListener(this);
+		btn13.addActionListener(e->{ // 람다식으로도 구현 가능
+			JComboBoxEx2 frame = new JComboBoxEx2();
+			frame.setVisible(true);
+		});
 		pComboBox.add(btn13);
 		
 		btn14 = new JButton("JComboBox3");
-		btn14.addActionListener(this);
+		btn14.addMouseListener(new MouseListener() {
+			
+			// 어떻게 작동하는지 console에서 확인해보기!
+			@Override
+			public void mouseReleased(MouseEvent e) {
+//				System.out.println("mouseRealeased");
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+//				System.out.println("mousePressed");
+				JComboBoxEx3 frame = new JComboBoxEx3();
+				frame.setVisible(true);
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+//				System.out.println("mouseExited");
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+//				System.out.println("mouseEntered");
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+//				System.out.println("mouseClicked");
+			}
+		});
 		pComboBox.add(btn14);
 		
 		pSliderSpiner = new JPanel();
@@ -255,11 +306,100 @@ public class SwingMain extends JFrame implements ActionListener {
 		pTabbedPane.add(btn17);
 		
 		btn18 = new JButton("JTable");
+		/* 이렇게 하면 익명 클래스로 들어오는데, btn18에서만 쓸 수 있는 method가 됨...
+		btn18.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		*/
+		/*
+		* 그럴바에야 this로 이 frame에서 처리하겠다 넘겨주고
+		* >> implements한 ActionListener를 통해서 아래 actionPerformed()로 넘어가면 더 편하기 때문에
+		* 이렇게 한 것
+		*/
+		
+		// mouseListener처럼 여러개 overriding해야하면 그냥 adapter로 선택 가능함
+		btn18.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				
+			}
+
+			
+		});
 		btn18.addActionListener(this);
 		pTabbedPane.add(btn18);
+		
+		// 혹은 actionListene를 new actionListner로 만들어서 this대신 넣어주면 됨
+		
+		pEventListener = new JPanel();
+		pEventListener.setBorder(new TitledBorder(null, "EventListener", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(pEventListener);
+		pEventListener.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		btn19 = new JButton("독립클래스");
+		btn19.addActionListener(this);
+		pEventListener.add(btn19);
+		
+		btn20 = new JButton("내부클래스");
+		btn20.addActionListener(this);
+		pEventListener.add(btn20);
+		
+		btn21 = new JButton("익명클래스");
+		btn21.addActionListener(this);
+		pEventListener.add(btn21);
+		
+		btn22 = new JButton("MouseListener");
+		btn22.addActionListener(this);
+		pEventListener.add(btn22);
+		
+		btn23 = new JButton("MouseAdapter");
+		btn23.addActionListener(this);
+		pEventListener.add(btn23);
+		
+		pMenu = new JPanel();
+		pMenu.setBorder(new TitledBorder(null, "JMenu&JPopupMenu", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(pMenu);
+		pMenu.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		btn24 = new JButton("JMenuBar");
+		btn24.addActionListener(this);
+		pMenu.add(btn24);
+		
+		btn25 = new JButton("JPopupMenu");
+		btn25.addActionListener(this);
+		pMenu.add(btn25);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn25) {
+			actionPerformedBtn25(e);
+		}
+		if (e.getSource() == btn24) {
+			actionPerformedBtn24(e);
+		}
+		if (e.getSource() == btn23) {
+			actionPerformedBtn23(e);
+		}
+		if (e.getSource() == btn22) {
+			actionPerformedBtn22(e);
+		}
+		if (e.getSource() == btn21) {
+			actionPerformedBtn21(e);
+		}
+		if (e.getSource() == btn20) {
+			actionPerformedBtn20(e);
+		}
+		if (e.getSource() == btn19) {
+			actionPerformedBtn19(e);
+		}
+		// 조건문을 통해서 어떤 부분의 event가 일어났는지 확인 후 실행
 		if (e.getSource() == btn18) {
 			actionPerformedBtn18(e);
 		}
@@ -275,12 +415,12 @@ public class SwingMain extends JFrame implements ActionListener {
 		if (e.getSource() == btn15) {
 			actionPerformedBtn15(e);
 		}
-		if (e.getSource() == btn14) {
-			actionPerformedBtn14(e);
-		}
-		if (e.getSource() == btn13) {
-			actionPerformedBtn13(e);
-		}
+//		if (e.getSource() == btn14) {
+//			actionPerformedBtn14(e);
+//		}
+//		if (e.getSource() == btn13) {
+//			actionPerformedBtn13(e);
+//		}
 		if (e.getSource() == btn12) {
 			actionPerformedBtn12(e);
 		}
@@ -414,14 +554,14 @@ public class SwingMain extends JFrame implements ActionListener {
 		JComboBoxEx1 frame = new JComboBoxEx1();
 		frame.setVisible(true);
 	}
-	protected void actionPerformedBtn13(ActionEvent e) {
-		JComboBoxEx2 frame = new JComboBoxEx2();
-		frame.setVisible(true);
-	}
-	protected void actionPerformedBtn14(ActionEvent e) {
-		JComboBoxEx3 frame = new JComboBoxEx3();
-		frame.setVisible(true);
-	}
+//	protected void actionPerformedBtn13(ActionEvent e) {
+//		JComboBoxEx2 frame = new JComboBoxEx2();
+//		frame.setVisible(true);
+//	}
+//	protected void actionPerformedBtn14(ActionEvent e) {
+//		JComboBoxEx3 frame = new JComboBoxEx3();
+//		frame.setVisible(true);
+//	}
 	protected void actionPerformedBtn15(ActionEvent e) {
 		JSliderEx frame = new JSliderEx();
 		frame.setVisible(true);
@@ -439,7 +579,36 @@ public class SwingMain extends JFrame implements ActionListener {
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtn18(ActionEvent e) {
+//		System.out.println(e.getActionCommand()); // actionPerformedEven안의 method 사용 가능
 		JTableEx frame = new JTableEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn19(ActionEvent e) {
+		IndepClassListener frame = new IndepClassListener();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn20(ActionEvent e) {
+		InnerClassListener frame = new InnerClassListener();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn21(ActionEvent e) {
+		AnonymousClassListener frame = new AnonymousClassListener();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn22(ActionEvent e) {
+		MouseListenerEx frame = new MouseListenerEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn23(ActionEvent e) {
+		MouseAdapterEx frame = new MouseAdapterEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn24(ActionEvent e) {
+		JMenuEx frame = new JMenuEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn25(ActionEvent e) {
+		JPopupMenuEx frame = new JPopupMenuEx();
 		frame.setVisible(true);
 	}
 }
